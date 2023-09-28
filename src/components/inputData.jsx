@@ -14,4 +14,3 @@ const InputData = () => {
 };
 
 export default InputData;
-dddd
