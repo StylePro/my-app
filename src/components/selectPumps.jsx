@@ -2,6 +2,7 @@ import React from "react";
 
 function SelectPumps ({addTypePump}) {
     const pumpName = [
+        {id: 0, name: '-'},
         {id: 1, name: 'ГХ'},
         {id: 2, name: 'ГХМ'},
         {id: 3, name: 'ГХС'},

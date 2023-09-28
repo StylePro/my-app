@@ -4,8 +4,8 @@ import SelectPumps from "./components/selectPumps";
 import InputData from "./components/inputData";
 
 
-function App(props) {
-    const [typeOfPump, setTypeOfPump] = useState('FD')
+function App() {
+    const [typeOfPump, setTypeOfPump] = useState('')
 
     function addTypePump (pump) {
         setTypeOfPump(pump)
@@ -16,9 +16,7 @@ function App(props) {
 
             <div>
                 <SelectPumps addTypePump={addTypePump}/>
-                <div style={{color: 'red'}}>{typeOfPump}</div>  {/*Поле для проверки*/}
-                <div>Заполните данные насоса:</div>
-                <InputData io = {props.typeOfPump}/>
+                <InputData pump={typeOfPump}/>
             </div>
 
         </div>
