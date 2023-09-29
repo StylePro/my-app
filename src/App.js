@@ -5,18 +5,19 @@ import InputData from "./components/inputData";
 
 
 function App() {
-    const [typeOfPump, setTypeOfPump] = useState('')
 
-    function addTypePump (pump) {
-        setTypeOfPump(pump)
+    const [pump, setPump] = useState('')
 
+    function addPump (rt) {
+        setPump(rt)
     }
+
     return (
         <div className='App'>
 
             <div>
-                <SelectPumps addTypePump={addTypePump}/>
-                <InputData pump={typeOfPump}/>
+                <SelectPumps addPump={addPump} pump={pump}/>
+                <InputData pump={pump}/>
             </div>
 
         </div>

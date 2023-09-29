@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 
+
+
 const InputData = ({pump}) => {
     const [formData, setFormData] = useState({supply: '', pressure: '', materialCode: '', density: '', explosionProtection: ''})
-    console.log(pump)
-    console.log(formData)
+
+
     function handleChange (event) {
         const {name, value} = event.target
         setFormData((prevFormData) => ({...prevFormData, [name]: value}))
