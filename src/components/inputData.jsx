@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
+import {useSelector} from "react-redux";
 
 
 
-const InputData = ({pump}) => {
+const InputData = () => {
     const [formData, setFormData] = useState({supply: '', pressure: '', materialCode: '', density: '', explosionProtection: ''})
+
+    const pumpUnit = useSelector(state=> state.pump)
 
 
     function handleChange (event) {
@@ -15,7 +18,7 @@ const InputData = ({pump}) => {
         event.preventDefault();
     }
 
-    if (pump) {
+    if (pumpUnit.pump) {
         return (
             <div>
                 <div>

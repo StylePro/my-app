@@ -1,25 +1,32 @@
 import React from "react";
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {addPump, removePump} from "./store/pumpSlice";
+import {useDispatch, useSelector} from "react-redux";
 
 
-function SelectPumps ({addPump, pump}) {
+function SelectPumps () {
 
-    function pumpTypeAdd (e) {
-        addPump(e.target.value)
+    const dispatch = useDispatch();
+    const pumpUnit = useSelector(state=> state.pump)
+
+    function pumpTypeAdd (pump) {
+        dispatch(addPump(pump))
+    }
+    function removeType () {
+        dispatch(removePump(''))
     }
 
     return(
         <div>
             <label>Выберите агрегат:</label>
-
             <FormControl fullWidth>
                 <InputLabel id="pumpName">Тип</InputLabel>
                 <Select
                     labelId="pumpName"
                     id="pumpName"
-                    value={pump}
+                    value={pumpUnit.pump}
                     label="pumpName"
-                    onChange={pumpTypeAdd}
+                    onChange={(e)=> pumpTypeAdd(e.target.value)}
                 >
                     <MenuItem value={'ГХ'}>ГХ</MenuItem>
                     <MenuItem value={'ГХМ'}>ГХМ</MenuItem>
@@ -27,6 +34,7 @@ function SelectPumps ({addPump, pump}) {
                     <MenuItem value={'ГХИ'}>ГХИ</MenuItem>
                 </Select>
             </FormControl>
+            <button onClick={removeType}>Очистить</button>
         </div>
     )
 }
