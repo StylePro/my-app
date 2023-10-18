@@ -6,8 +6,6 @@ import FormData from "./components/FormData";
 import {useSelector} from "react-redux";
 
 
-
-
 function App() {
     const pump = useSelector(state => state.pump.pump)
     return (
