@@ -1,11 +1,12 @@
 import {createSlice} from "@reduxjs/toolkit";
 
+const initialState = {
+    pump: ''
+}
 
 const pumpSlice = createSlice ({
     name: 'pump',
-    initialState: {
-        pump:'',
-    },
+    initialState,
     reducers: {
         addPump (state, action) {
             state.pump = action.payload
@@ -14,7 +15,6 @@ const pumpSlice = createSlice ({
             state.pump = action.payload
         }
     }
-
 })
 
 export const {addPump, removePump} = pumpSlice.actions;

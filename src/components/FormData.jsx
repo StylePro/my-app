@@ -19,14 +19,26 @@ const FormData = () => {
     const specifications = useSelector(state => state.propertiesPumps.property)
 
     function filterSpecifications(array) {
-        if (pump === 'ГХИ') {
+        if (pump === 'ГХ') {
             return (array.filter(s => {
-                return s.typePump === 'ALLPUMPS' || 'ГХИ'
+                return (s.typePump !== 'ГХИ' && s.typePump !=='ГХС')
             }))
         }
-        if (pump === 'ГХ' || 'ГХМ') {
-            return (array.filter(s => s.typePump !== 'ГХИ'))
+        if (pump === 'ГХМ') {
+            return (array.filter(s => {
+                return (s.typePump !== 'ГХИ' && s.typePump !=='ГХС')
+            }))
         }
+        if (pump === 'ГХИ') {
+            return (array.filter(s => {
+                return (s.typePump !== 'ГХС')
+            }))
+        }
+        if (pump === 'ГХС') {
+            return (array.filter(s => {
+                return (s.typePump !== 'ГХИ')
+            }))
+        } else return array
     }
 
     return (
@@ -38,17 +50,18 @@ const FormData = () => {
                 return (
                     <div key={property.id}>
                         {property.viewType === 'input' &&
-                            <label>{property.name}
+                            <label key={property.id}>{property.name}
                                 <Input
+                                    key={property.id}
                                     type={property.type}
                                     value={property.currentValue}
                                     onChange={e => inputHandler(e.target.value, property.id)}
                                 ></Input>
                             </label>}
                         {property.viewType === 'select' &&
-                            <label>{property.name}
-                                <Select>{property.selectOptions.map(s => <option key={s.id}
-                                                                                 value={s.code}>{s.code}</option>)}</Select>
+                            <label key={property.id}>{property.name}
+                                <Select key={property.id}>{property.selectOptions.map(s => <option key={s.id}
+                                                                                 value={s.code}>{s.code}{s.value}</option>)}</Select>
                             </label>}
                     </div>
                 )
